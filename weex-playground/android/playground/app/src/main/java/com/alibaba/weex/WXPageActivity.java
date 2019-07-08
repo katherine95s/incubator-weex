@@ -97,7 +97,7 @@ public class WXPageActivity extends WXBaseActivity implements IWXRenderListener,
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_wxpage);
     setCurrentWxPageActivity(this);
-
+    Log.d("jhy","jhy");
 
     WXSDKEngine.setActivityNavBarSetter(new NavigatorAdapter());
     getWindow().setFormat(PixelFormat.TRANSLUCENT);

@@ -1,0 +1,55 @@
+
+buildscript {
+    repositories {
+        google()
+        maven(){
+            url 'https://maven.aliyun.com/repository/google'
+        }
+        jcenter(){
+            url 'https://maven.aliyun.com/repository/jcenter'
+        }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.3.2'
+    }
+}
+
+
+subprojects {
+    repositories {
+        google()
+        maven(){
+            url 'https://maven.aliyun.com/repository/google'
+        }
+        jcenter(){
+            url 'https://maven.aliyun.com/repository/jcenter'
+        }
+    }
+    buildscript {
+        dependencies {
+            classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
+            classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        }
+        repositories {
+            google()
+            maven(){
+                url 'https://maven.aliyun.com/repository/google'
+            }
+            jcenter(){
+                url 'https://maven.aliyun.com/repository/jcenter'
+            }
+        }
+    }
+    ext {
+        compileSdkVersion=26
+        buildToolsVersion="26.0.3"
+        minSdkVersion=14
+        targetSdkVersion=26
+        supportLibVersion="26.0.2"
+        fastjsonLibVersion="1.1.46.android"
+        //Default value for buildCpp is true
+        buildCpp = !project.hasProperty("buildCpp") || buildCpp.equals("true")
+        //Default value for disableCov is false
+        disableCov = project.hasProperty("disableCov") && disableCov.equals("true")
+    }
+}

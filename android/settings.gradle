@@ -1,6 +1,14 @@
 rootProject.name = 'weex-project'
-include ":playground"
-project(":playground").projectDir=new File("playground/app")
+def addSubtree(){
+    def playgroundRepo = "https://github.com/katherine95s/incubator-weex.git"
+    def branch = "testSubtree"
+    def command = "cd .. && git subtree add --prefix=weex-playground " + playgroundRepo + " " + branch +" --squash"
+    exec {
+        executable "bash"
+        args "-c",command
+    }
+}
+addSubtree()
 
 include ":weex_sdk"
 project(":weex_sdk").projectDir = new File("sdk")
@@ -9,7 +17,11 @@ project(":weex_sdk").projectDir = new File("sdk")
 //include ":HeronAndroid"
 //project(":HeronAndroid").projectDir = new File("../../Heron/HeronAndroid")
 
+include ":playground"
+project(":playground").projectDir=new File("../weex-playground/android/playground/app")
 
 include ":commons"
+project(":commons").projectDir=new File("../weex-playground/android/commons")
+
 
 

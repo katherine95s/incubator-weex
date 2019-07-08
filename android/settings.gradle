@@ -2,7 +2,7 @@ rootProject.name = 'weex-project'
 def addSubtree(){
     def playgroundRepo = "https://github.com/katherine95s/incubator-weex.git"
     def branch = "testSubtree"
-    def command = "cd .. && git subtree add --prefix=weex-playground " + playgroundRepo + " " + branch +" --squash"
+    def command = "cd .. && git subtree pull --prefix=weex-playground " + playgroundRepo + " " + branch +" --squash"
     exec {
         executable "bash"
         args "-c",command

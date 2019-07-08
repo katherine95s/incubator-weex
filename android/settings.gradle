@@ -9,21 +9,21 @@ def updateSubtree(){
             args "-c", command
         }
     }catch(all){
-        print("cannot pull subtree")
+        println("cannot pull subtree")
     }
 }
 def addSubtree(){
     def playgroundRepo = "https://github.com/katherine95s/incubator-weex.git"
     def branch = "testSubtree"
     def command = "cd .. && git subtree add --prefix=weex-playground " + playgroundRepo + " " + branch +" --squash"
- //   try {
+    try {
         exec {
             executable "bash"
             args "-c", command
         }
-//    }catch(all){
-//        print("cannot pull subtree")
-//    }
+    }catch(all){
+        println("cannot pull subtree")
+    }
 }
 addSubtree()
 updateSubtree()

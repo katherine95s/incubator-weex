@@ -1,14 +1,32 @@
 rootProject.name = 'weex-project'
-def addSubtree(){
+def updateSubtree(){
     def playgroundRepo = "https://github.com/katherine95s/incubator-weex.git"
     def branch = "testSubtree"
     def command = "cd .. && git subtree pull --prefix=weex-playground " + playgroundRepo + " " + branch +" --squash"
-    exec {
-        executable "bash"
-        args "-c",command
+    try {
+        exec {
+            executable "bash"
+            args "-c", command
+        }
+    }catch(all){
+        print("cannot pull subtree")
     }
 }
+def addSubtree(){
+    def playgroundRepo = "https://github.com/katherine95s/incubator-weex.git"
+    def branch = "testSubtree"
+    def command = "cd .. && git subtree add --prefix=weex-playground " + playgroundRepo + " " + branch +" --squash"
+ //   try {
+        exec {
+            executable "bash"
+            args "-c", command
+        }
+//    }catch(all){
+//        print("cannot pull subtree")
+//    }
+}
 addSubtree()
+updateSubtree()
 
 include ":weex_sdk"
 project(":weex_sdk").projectDir = new File("sdk")
